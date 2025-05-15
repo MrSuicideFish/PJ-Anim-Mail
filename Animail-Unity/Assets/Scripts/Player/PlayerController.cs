@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravity = -9.8f;
     [SerializeField] private float glideGravity = -2f;
     [SerializeField] private float fallMultiplier = 2.5f;
+    [SerializeField] private float ViewRotationSpeed = 2.5f;
 
     private Vector2 m_moveDirection;
     private Vector3 m_velocity;
