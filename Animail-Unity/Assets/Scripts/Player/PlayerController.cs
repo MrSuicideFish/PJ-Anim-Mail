@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Transform m_view;
     [SerializeField] private CharacterController m_characterController;
+    [SerializeField] private Animator m_animator;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float gravity = -9.8f;
@@ -18,63 +19,82 @@ public class PlayerController : MonoBehaviour
     private bool m_isJumping;
     private bool m_isGliding;
     private bool m_isFacingRight = true;
+    private float m_jumpReleaseTime;
+    private float m_glideTime;
 
-    private void Update()
+    private void HandleFacingDirection()
     {
-        // flip the player around when changing direction
+        // Flip the player around when changing direction
         if (m_moveDirection.x != 0)
         {
             m_isFacingRight = !(m_moveDirection.x < 0);
         }
-
+        
         Vector3 targetRot = new Vector3(0, m_isFacingRight ? 0 : 180, 0);
         m_view.rotation = Quaternion.Slerp(m_view.rotation, Quaternion.Euler(targetRot), ViewRotationSpeed * Time.deltaTime);
+    }
+
+    private void Update()
+    {
+        InputSystem.Update();
+        HandleFacingDirection();
         
-        // Check if the player is grounded
         m_isGrounded = m_characterController.isGrounded;
-
-        if (m_isGrounded && m_velocity.y < 0)
-        {
-            m_velocity.y = 0f; // Reset vertical velocity when grounded
-        }
-
-        // Horizontal movement
+        
+        // horizontal movement
         Vector3 move = new Vector3(m_moveDirection.x, 0, m_moveDirection.y);
         m_characterController.Move(move * moveSpeed * Time.deltaTime);
-
+        
+        // Check for jump peak and enable gliding if holding jump
+        if (!m_isGrounded && m_velocity.y <= 0 && m_isJumping)
+        {
+            m_isGliding = true;
+        }
+        
         // Apply gravity
         if (m_isGliding)
         {
-            m_velocity.y += glideGravity * Time.deltaTime;
+            m_glideTime = Mathf.Clamp01(m_glideTime + Time.deltaTime);
+            m_velocity.y += glideGravity * Time.deltaTime * (1.0f + (m_glideTime * (fallMultiplier * 2.0f)));
         }
         else if (!m_isGrounded && !m_isJumping)
         {
-            m_velocity.y += gravity * fallMultiplier * Time.deltaTime;
+            m_jumpReleaseTime = Mathf.Clamp01(m_jumpReleaseTime + Time.deltaTime * fallMultiplier);
+            float multiplier = fallMultiplier * m_jumpReleaseTime;
+            m_velocity.y += gravity * multiplier * Time.deltaTime;
         }
         else
         {
             m_velocity.y += gravity * Time.deltaTime;
         }
 
-        // Apply vertical velocity
         m_characterController.Move(m_velocity * Time.deltaTime);
+
+        m_animator.SetFloat("Velocity", move.normalized.magnitude);
+        m_animator.SetBool("IsGrounded", m_isGrounded);
+        m_animator.SetTrigger("hasJumped");
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.started && m_isGrounded)
+        if (context.started)
         {
-            m_isJumping = true;
-            m_velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity); // Apply jump force
+            if (m_isGrounded)
+            {
+                m_isJumping = true;
+                m_isGliding = false;
+                m_velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+            }
+            else
+            {
+                m_isGliding = true;
+            }
         }
         else if (context.canceled)
         {
+            m_jumpReleaseTime = 0.0f;
+            m_isGliding = false;
             m_isJumping = false;
-            m_isGliding = false; // Stop gliding when jump is released
-        }
-        else if (context.performed && !m_isGrounded)
-        {
-            m_isGliding = true; // Start gliding when holding jump
         }
     }
 
