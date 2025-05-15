@@ -16,9 +16,19 @@ public class PlayerController : MonoBehaviour
     private bool m_isGrounded;
     private bool m_isJumping;
     private bool m_isGliding;
+    private bool m_isFacingRight = true;
 
     private void Update()
     {
+        // flip the player around when changing direction
+        if (m_moveDirection.x != 0)
+        {
+            m_isFacingRight = !(m_moveDirection.x < 0);
+        }
+
+        Vector3 targetRot = new Vector3(0, m_isFacingRight ? 0 : 180, 0);
+        m_view.rotation = Quaternion.Slerp(m_view.rotation, Quaternion.Euler(targetRot), ViewRotationSpeed * Time.deltaTime);
+        
         // Check if the player is grounded
         m_isGrounded = m_characterController.isGrounded;
 
