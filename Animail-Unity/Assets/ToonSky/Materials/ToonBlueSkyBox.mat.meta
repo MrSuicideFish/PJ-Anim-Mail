@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 64fdb97527e083b40a04e006f5e772ad
+timeCreated: 1474197577
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 71840
+  packageName: Toon Sky
+  packageVersion: 1.0
+  assetPath: Assets/ToonSky/Materials/ToonBlueSkyBox.mat
+  uploadId: 137669
