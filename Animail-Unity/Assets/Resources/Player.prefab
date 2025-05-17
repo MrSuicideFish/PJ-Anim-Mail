@@ -43,20 +43,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708882806854814703}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 694f7b1cb22ce7c4f83999c463ba6a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_rigidBody: {fileID: 6672980409795613339}
   m_view: {fileID: 6503335231542897398}
-  m_characterController: {fileID: 0}
-  m_animator: {fileID: 2891316922335956160}
-  moveSpeed: 7
-  jumpForce: 3
-  gravity: -30
-  glideGravity: -2
-  fallMultiplier: 2.3
   ViewRotationSpeed: 15
+  m_groundLayer:
+    serializedVersion: 2
+    m_Bits: 257
+  m_groundCheckYOffset: 0
+  m_groundCheckXOffset: 0.31
+  m_checkDistance: 0.01
 --- !u!114 &3156327970842427462
 MonoBehaviour:
   m_ObjectHideFlags: 0
