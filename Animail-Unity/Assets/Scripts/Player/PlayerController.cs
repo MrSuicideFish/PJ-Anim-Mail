@@ -52,6 +52,10 @@ public class PlayerController : MonoBehaviour
                            Vector3.down, m_checkDistance, m_groundLayer) ||
                        Physics2D.Raycast(right,
                            Vector3.down, m_checkDistance, m_groundLayer);
+	if(m_isGrounded)
+	{
+		//m_animator.ResetTrigger("hasJumped");
+	}
     }
 
     private void DoGroundMove()
@@ -72,7 +76,7 @@ public class PlayerController : MonoBehaviour
         
         m_animator.SetFloat("Velocity", m_moveDirection.normalized.magnitude);
         m_animator.SetBool("IsGrounded", m_isGrounded);
-        m_animator.SetTrigger("hasJumped");
+
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -82,6 +86,7 @@ public class PlayerController : MonoBehaviour
             if (m_isGrounded)
             {
                 m_rigidBody.AddForce(Vector2.up * m_jumpForce, ForceMode2D.Impulse);
+        	m_animator.SetTrigger("hasJumped");
             }
         }
     }

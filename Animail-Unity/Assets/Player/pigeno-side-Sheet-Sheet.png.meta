@@ -125,8 +125,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 218b08c4a352674499dd86685d895e6e
-      internalID: -968824732
+      spriteID: 99a5b7e05a383514cabdc5706f8a2492
+      internalID: -180969302
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1f40de0a77471848b231a6de23641f1
-      internalID: -764967999
+      spriteID: 0d199ec08a6a5724a8fc2b35692eebf7
+      internalID: 1542914492
       vertices: []
       indices: 
       edges: []
@@ -169,8 +169,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c017716d67655845983988363e12b8d
-      internalID: -331487896
+      spriteID: a075cfa92ff59f14499363a162a24d3b
+      internalID: 741681394
       vertices: []
       indices: 
       edges: []
@@ -191,8 +191,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4032295d7d31fb54399edaa1e26d76b8
-      internalID: 1027030698
+      spriteID: 24067d1d3581f8943a12788686ed6072
+      internalID: 1604849974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pigeno-side-Sheet-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66232e79036159244a32745880215761
+      internalID: 2089528754
       vertices: []
       indices: 
       edges: []
@@ -211,10 +233,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      pigeno-side-Sheet-Sheet_0: -968824732
-      pigeno-side-Sheet-Sheet_1: -764967999
-      pigeno-side-Sheet-Sheet_2: -331487896
-      pigeno-side-Sheet-Sheet_3: 1027030698
+      pigeno-side-Sheet-Sheet_0: -180969302
+      pigeno-side-Sheet-Sheet_1: 1542914492
+      pigeno-side-Sheet-Sheet_2: 741681394
+      pigeno-side-Sheet-Sheet_3: 1604849974
+      pigeno-side-Sheet-Sheet_4: 2089528754
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

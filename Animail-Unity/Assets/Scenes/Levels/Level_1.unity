@@ -220,7 +220,7 @@ TilemapCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: db4ac2e19ec1be348941d66378854f9f, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -6332,6 +6332,14 @@ PrefabInstance:
     - target: {fileID: 6672980409795613339, guid: 288010e59c4546a41b4398d060de8251, type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8082483737255242526, guid: 288010e59c4546a41b4398d060de8251, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -180969302, guid: fefc3c24a09c01041b9afea9c1462e3f, type: 3}
+    - target: {fileID: 8082483737255242526, guid: 288010e59c4546a41b4398d060de8251, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8664885597867892408, guid: 288010e59c4546a41b4398d060de8251, type: 3}
       propertyPath: m_Offset.y
